@@ -1,4 +1,4 @@
-import pytest
+# import pytest
 import requests
 
 from pytest_bdd import scenarios, when, then, given
