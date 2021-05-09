@@ -28,8 +28,6 @@ $ pipenv shell
 # Install dependencies
 $ pipenv install
 
-# Create db
- Delete db.sqlite file if you want to create new tables, otherwise it will be automatically created
 # Run Server (http://localhst:5000)
 python app.py
 ```
