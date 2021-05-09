@@ -44,7 +44,7 @@ python app.py
   * POST  /employee/salary/delete/"id"
 
 # Postman Script
-- Please find the postman script for all above REST endpoint [here](https://github.com/nilaynarlawar/AWS_Flask_CRUD_Web_Application/blob/main/Flask-AWS-Project.postman_collection.json)
+- Please find the postman script for all above REST endpoint [here](https://github.com/nilaynarlawar/aws_flask_app/blob/main/Flask-AWS-Project.postman_collection.json)
 
 # Docker Setup
 * Fork git repo
@@ -99,7 +99,8 @@ python app.py
 # CI/CD
 
 ## Github Actions
-Find the steps for github action [here](https://github.com/nilaynarlawar/AWS_Flask_CRUD_Web_Application/blob/main/.github/workflows/aws.yml)
+* Find the steps for github action [here](https://github.com/nilaynarlawar/aws_flask_app/tree/main/.github/workflows)
+* Find how to run Github Action workflows sequencially [here](https://stevenmortimer.com/running-github-actions-sequentially/#step-1---create-a-personal-access-token-pat)
 
 ## AWS ECS deployment
 
@@ -130,7 +131,7 @@ Find the steps for github action [here](https://github.com/nilaynarlawar/AWS_Fla
 
 # UI Screenshot
 
-![Image of UI](https://github.com/nilaynarlawar/AWS_Flask_CRUD_Web_Application/blob/main/UI%20Screenshot.png)
+![Image of UI](https://github.com/nilaynarlawar/aws_flask_app/blob/main/UI%20Screenshot.png)
 
 # References
   * https://www.youtube.com/watch?v=PTZiDnuC86g&t=705s
