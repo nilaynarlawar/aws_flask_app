@@ -70,7 +70,7 @@
                                     <h4 class="modal-title">Update Information</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="{{ url_for('add_employee') }}" method="POST">
+                                    <form action="{{ url_for('update_employee') }}" method="POST">
                                         <div class="form-group">
                                             <label>Name:</label>
                                             <input type="hidden"  name="id" value="{{row.id}}">
@@ -112,7 +112,7 @@
                             <h4 class="modal-title">Add Employee</h4>
                         </div>
                         <div class="modal-body">
-                            <form action="{{ url_for('add_employee') }}" method="GET">
+                            <form action="{{ url_for('add_employee') }}" method="POST">
                                 <div class="form-group">
                                     <label>Name:</label>
                                     <input type="text" class="form-control" name="name" required="1">

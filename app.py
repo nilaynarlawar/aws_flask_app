@@ -17,23 +17,50 @@ def delete_all_records():
 
 
 # Create a Employee
-@app.route('/employee/add', methods=['GET','POST'])
+@app.route('/employee/add', methods=['POST'])
 def add_employee():
-    """
-    name = request.args.get('name')
-    email = request.args.get('email')
-    addr = request.args.get('addr')
-    cmpy = request.args.get('cmpy')
+    name = request.form['name']
+    email = request.form['email']
+    addr = request.form['addr']
+    cmpy = request.form['cmpy']
     Employee.add_employee(name, email, addr, cmpy)
     flash("Employee added successfully!!")
-    return {"Status" : 200}
-    """
-    if request.method == 'GET':
-        return {"Status": 200}
-    if request.method == 'POST':
-        print('post')
-        return {"Status": 300}
+    return redirect(url_for('Index'))
 
+# Get All Employee
+@app.route('/employees', methods=['GET'])
+def get_employees():
+    all_employees = Employee.get_all_employees()
+    return render_template("index.html", employees=all_employees)
+
+# Get Single Employee
+@app.route('/employee/getbyid/<id>', methods=['GET'])
+def get_employee(id):
+    employee = Employee.exists(id)
+    return employee_schema.jsonify(employee)
+
+# Update a Employee
+@app.route('/employee/update', methods=['POST'])
+def update_employee():
+    id = request.form.get('id')
+    name = request.form['name']
+    email = request.form['email']
+    addr = request.form['addr']
+    cmpy = request.form['cmpy']
+
+    Employee.update_employee(id, name, email, addr, cmpy)
+    flash("Employee Updated Successfully!!")
+    return redirect(url_for('Index'))
+
+# Delete Employee
+@app.route('/employee/delete/<id>/', methods=['GET', 'POST'])
+def delete_employee(id):
+    Employee.delete_employee(id)
+    if EmployeeSal.exists(id):
+        EmployeeSal.delete_employee_salary(id)
+    flash("Employee Deleted Successfully!!")
+    return redirect(url_for('Index'))
+    
 
 # ---------------------------------- Employee Salary REST Code ---------------------------
 
@@ -59,8 +86,42 @@ def Index():
     all_employees = Employee.get_all_employees()
     print(all_employees)
     all_employees_salaries = EmployeeSal.get_all_employees_salaries()
-    # print(all_employees_salaries)
     return render_template("index.html", employees=all_employees, employees_salary=all_employees_salaries)
+
+# Get All Employee Salaries
+@app.route('/employees/salaries', methods=['GET'])
+def get_emp_salaries():
+    all_emp_salaries = EmployeeSal.get_all_employees_salaries()
+    return render_template("index.html", employees_salary=all_emp_salaries)
+
+# Get Single Employee Salary
+@app.route('/employee/salary/getbyid/<emp_id>', methods=['GET'])
+def get_emp_salary(emp_id):
+    employee = EmployeeSal.exists(emp_id)
+    return empsalary_schema.jsonify(employee)
+
+# Update a Employee Salary
+@app.route('/employee/salary/update', methods=['POST'])
+def update_emp_salary():
+    id = request.form.get('id')
+    emp_id = request.form['emp_id']
+    salary = request.form['salary']
+    currency = request.form['currency']
+    pay_type = request.form['pay_type']
+    pay_cycle = request.form['pay_cycle']
+    EmployeeSal.update_employee_salary(id, emp_id, salary, currency, pay_type, pay_cycle)
+
+    flash("Employee Salary Updated Successfully!!")
+    return redirect(url_for('Index'))
+
+
+# Delete Employee Salary
+@app.route('/employee/salary/delete/<emp_id>', methods=['GET', 'POST'])
+def delete_emp_salary(emp_id):
+    EmployeeSal.delete_employee_salary(emp_id)
+    flash("Employee Salary Deleted Successfully!!")
+    return redirect(url_for('Index'))
+
 
 # Run Server
 
