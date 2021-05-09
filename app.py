@@ -37,7 +37,7 @@ def get_employees():
 @app.route('/employee/getbyid/<id>', methods=['GET'])
 def get_employee(id):
     employee = Employee.exists(id)
-    return employee_schema.jsonify(employee)
+    return employee
 
 # Update a Employee
 @app.route('/employee/update', methods=['POST'])
@@ -98,7 +98,7 @@ def get_emp_salaries():
 @app.route('/employee/salary/getbyid/<emp_id>', methods=['GET'])
 def get_emp_salary(emp_id):
     employee = EmployeeSal.exists(emp_id)
-    return empsalary_schema.jsonify(employee)
+    return employee
 
 # Update a Employee Salary
 @app.route('/employee/salary/update', methods=['POST'])
