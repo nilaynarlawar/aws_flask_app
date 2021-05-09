@@ -29,7 +29,7 @@ def create_employee_response(employee_details):
     return get_empres
 
 
-@pytest.fixture
+# @pytest.fixture
 @when('the Employee salary add API is queried with "<employee_salary_details>"')
 def create_employee_salary_response(employee_salary_details):
     data_list = [x.strip() for x in employee_salary_details.split(',')]
@@ -44,7 +44,7 @@ def create_employee_salary_response(employee_salary_details):
         return response
     return get_empres
 
-@pytest.fixture
+# @pytest.fixture
 @when('the Employee salary delete API is queried with "<emp_id>"')
 def delete_employee_salary_response(emp_id):
     get_empres = requests.get(CALLING_CODE_API + '/employee/salary/getbyid/' + emp_id)

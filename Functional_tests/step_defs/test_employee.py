@@ -18,7 +18,7 @@ def empty_table():
     assert response.status_code == 200
 
 
-@pytest.fixture
+# @pytest.fixture
 @when('the Employee add API is queried with "<employee_details>"')
 def create_employee_response(employee_details):
     data_list = [x.strip() for x in employee_details.split(',')]
@@ -33,7 +33,7 @@ def create_employee_response(employee_details):
     return get_empres
 
 
-@pytest.fixture
+# @pytest.fixture
 @when('the Employee delete API is queried with "<emp_id>"')
 def delete_employee_response(emp_id):
     get_empres = requests.get(CALLING_CODE_API + '/employee/getbyid/' + emp_id)
